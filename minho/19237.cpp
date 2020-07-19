@@ -2,132 +2,183 @@
 
 using namespace std;
 
-struct scent {
+struct map {    // 상어의 위치
     int shark;
     int time;
+    bool islocated;
 };
 
-struct move {
-    int dir[4][4];
-};
-
-struct position {
+struct position {   // 현재 상어 위치 및 이동 정보
     int x;
     int y;
-    bool alive;
+    bool isalive;
+    int dir;
+    int movement[5][5];
 };
 
-int dx[4] = {0,0,-1,1}; // up down left right
-int dy[4] = {-1,1,0,0};
+int dx[5] = {999,0,0,-1,1}; // up(1) down(2) left(3) right(4)
+int dy[5] = {999,-1,1,0,0};
 
 int main()
 {
     int N,M,k;
     cin >> N >> M >> k;
 
-    // Array of structure
-    struct scent s[N][N];
-    struct position p[M];
+    struct map map[N][N];
+    struct position position[M+1];
+
     int temp = 0;
-    
-    // For 0 initialization
-    for(int i =0; i < N; i++){
-        for(int j = 0; j <N; j++){
-            cin >> temp;
-            if(temp == 0){
-                s[i][j] = {};
-            }
-            else{
-                s[i][j].shark = temp;
-                s[i][j].time = 4;
-                p[temp-1].x = j;
-                p[temp-1].y = i;
-                p[temp-1].alive = true;
-            }
-        }
-    }
-        
-    int cur[M]; // present direction
-
-    for(int i = 0; i < M; i++)
-        cin >> cur[i];
-
-    struct move mv[M];  // store movement
-
-    // store each movement;
-    for(int i = 0; i < M; i++){
-        for(int j = 0; j < 4; j++){
-            cin >> mv[i].dir[j][0] >> mv[i].dir[j][1];
-            cin >> mv[i].dir[j][2] >> mv[i].dir[j][3];
-        }
-    }
-
     int time = 0;
     int curx = 0;
     int cury = 0;
-    int cnt = 0;
+    int curdir = 0;
+    int newx = 0;
+    int newy = 0;
+    int newdir = 0;
 
+    for(int i =0 ; i < N; i++){
+        for(int j = 0; j < N; j++){
+            cin >> temp;
 
-    while(1){
-        if(time > 1000){
-            cout << "-1\n";
-        }
-
-        cnt = 0;
-
-        for(int i = 0 ;i < N; i++){
-            for(int j = 0; j < N; j++){
-                if(s[i][j].time == 4){  // shark is located
-                    continue;
-                }
-                if(s[i][j].time > 0){
-                    s[i][j].time--;
-                    if(s[i][j].time == 0){  // scent is removed
-                        s[i][j].shark = 0;
-                    }
-                }
+            if(temp == 0){
+                map[i][j].shark = 0;
+                map[i][j].time = 0;
+                map[i][j].islocated = false;
+            }
+            else{
+                map[i][j].shark = temp;
+                map[i][j].time = 4;
+                map[i][j].islocated = true;
+                position[temp].x = j;
+                position[temp].y = i;
+                position[temp].isalive = true;
             }
         }
+    }
 
-        for(int i = M-1; i >= 0; i--){
-            if(p[i].alive == false){
+    for(int i = 1; i <= M; i++){
+        cin >> position[i].dir;
+    }
+
+    for(int i = 1; i <= M; i++){
+        for(int j = 1; j <=4; j++){
+            for(int k = 1; k <= 4; k++)
+                cin >> position[i].movement[j][k];
+        }
+    }
+
+    while(1){
+        if(time > 1000){    // 1000초 초과
+            cout << "-1\n";
+            break;
+        }
+
+        if(time > 26) break;
+
+        temp = 0;
+
+        for(int i = 1; i <= M; i++){
+            if(position[i].isalive == true)
+                temp++;
+        }
+
+        if(temp == 1){   // 1번 상어만 남았을 때
+            cout << time << "\n";
+            break;
+        }
+        
+
+        //  새로운 위치 찾기
+        for(int i = 1; i <= M; i++){
+            if(position[i].isalive == false){
                 continue;
             }
 
-            cnt++;
-            curx = p[i].x;
-            cury = p[i].y;
-            int temp_cur = cur[i];
-            int new_cur = 0;
-            int newx = 0;
-            int newy = 0;
+            curx = position[i].x;
+            cury = position[i].y;
+            curdir = position[i].dir;
+            bool flag = false;
 
-            for(int j =0; j < 4; j++){
-                new_cur = mv[i].dir[temp_cur-1][j];
+            // 빈공간 찾기
+            for(int j = 1; j <= 4; j++){
+                newdir = position[i].movement[curdir][j];
+                newx = curx + dx[newdir];
+                newy = cury + dy[newdir];
 
-                newx = curx + dx[new_cur-1];
-                newy = cury + dy[new_cur-1];
+                if(newx < 0 || newx > N-1 || newy < 0 || newy > N-1){
+                    continue;
+                }
 
-                if(s[newy][newx].shark == 0){   // no scent case
+                if(map[newy][newx].time == 0){
+                    flag = true;
                     break;
                 }
             }
 
-            p[i].x = newx;
-            p[i].y = newy;
-            s[cury][curx].time--;
-            s[newy][newx].shark = i+1;
-            s[newy][newx].time = 4;
-            cur[i] = new_cur;
+            // 빈공간이 없으면
+            if(flag == false){
+                for(int j = 1; j <= 4; j++){
+                    newdir = position[i].movement[curdir][j];
+                    newx = curx + dx[newdir];
+                    newy = cury + dy[newdir];
+
+                    if(newx < 0 || newx > N-1 || newy < 0 || newy > N-1){
+                        continue;
+                    }
+
+                    if(i == map[newy][newx].shark)
+                        break;
+                }
+            }
+
+            position[i].x = newx;
+            position[i].y = newy;
+            position[i].dir = newdir;
+            //map[newy][newx].islocated = true;
+            map[cury][curx].islocated = false;
+
+            cout << i << " " << position[i].dir << " : ( " << newy << " , " << newx << " )\n";
         }
         
-        time++;
+        
+        // 상어 위치 갱신
+        for(int i = 1; i <= M; i++){
+            if(position[i].isalive == false){
+                continue;
+            }
+            // 이미 상어가 위치해 있다면 죽인다
+            if(map[position[i].y][position[i].x].islocated == true){
+                position[i].isalive = false;
+                cout << "kill " << i << "\n";
+                continue;
+            }
 
-        if(cnt == 1){
-            cout << time << "\n";
+            map[position[i].y][position[i].x].shark = i;
+            map[position[i].y][position[i].x].time = 4;
+            map[position[i].y][position[i].x].islocated = true;
         }
-    }
 
+        // 향기 조정
+        for(int i = 0; i < N; i++){
+            for(int j = 0; j < N; j++){
+                // 상어가 없다면 시간 감소
+                if(!map[i][j].islocated && map[i][j].time > 0){
+                    map[i][j].time--;
+                }
+
+                // 향기 사라진 경우
+                if(map[i][j].time == 0){
+                    map[i][j].shark = 0;
+                }
+                cout << map[i][j].shark << " ";
+            }
+            cout << "\n";
+        }
+        cout << "\n";
+
+
+        time++;
+    }
     
     return 0;
 }
