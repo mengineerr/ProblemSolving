@@ -21,8 +21,8 @@ int dy[5] = {999,-1,1,0,0};
 
 int main()
 {
-    int N,M,k;
-    cin >> N >> M >> k;
+    int N,M,K;
+    cin >> N >> M >> K;
 
     struct map map[N][N];
     struct position position[M+1];
@@ -47,7 +47,7 @@ int main()
             }
             else{
                 map[i][j].shark = temp;
-                map[i][j].time = 4;
+                map[i][j].time = K;
                 map[i][j].islocated = true;
                 position[temp].x = j;
                 position[temp].y = i;
@@ -73,7 +73,7 @@ int main()
             break;
         }
 
-        if(time > 26) break;
+        //if(time > 26) break;
 
         temp = 0;
 
@@ -137,7 +137,7 @@ int main()
             //map[newy][newx].islocated = true;
             map[cury][curx].islocated = false;
 
-            cout << i << " " << position[i].dir << " : ( " << newy << " , " << newx << " )\n";
+            //cout << i << " " << position[i].dir << " : ( " << newy << " , " << newx << " )\n";
         }
         
         
@@ -149,12 +149,12 @@ int main()
             // 이미 상어가 위치해 있다면 죽인다
             if(map[position[i].y][position[i].x].islocated == true){
                 position[i].isalive = false;
-                cout << "kill " << i << "\n";
+                //cout << "kill " << i << "\n";
                 continue;
             }
 
             map[position[i].y][position[i].x].shark = i;
-            map[position[i].y][position[i].x].time = 4;
+            map[position[i].y][position[i].x].time = K;
             map[position[i].y][position[i].x].islocated = true;
         }
 
@@ -170,11 +170,11 @@ int main()
                 if(map[i][j].time == 0){
                     map[i][j].shark = 0;
                 }
-                cout << map[i][j].shark << " ";
+                //cout << map[i][j].shark << " ";
             }
-            cout << "\n";
+            //cout << "\n";
         }
-        cout << "\n";
+        //cout << "\n";
 
 
         time++;
