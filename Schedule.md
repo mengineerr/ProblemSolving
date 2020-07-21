@@ -25,8 +25,8 @@
 # 7월 20일   
 ### 문제 목록
 
-**GOLD V**  [**#1759**](https://www.acmicpc.net/problem/1759)    순열, 조합론   
-**GOLD V**  [**#3190**](https://www.acmicpc.net/problem/3190)   구현   
-**GOLD V**  [**#15686**](https://www.acmicpc.net/problem/15686)  브루트 포스   
-**GOLD IV** [**#1520**](https://www.acmicpc.net/problem/1520)    DP    
-**GOLD IV** [**#2573**](https://www.acmicpc.net/problem/2573)  DFS, BFS   
+암호만들기 [**#1759**](https://www.acmicpc.net/problem/1759) Tag: 순열, 조합론   
+뱀  [**#3190**](https://www.acmicpc.net/problem/3190) Tag: 구현   
+치킨 배달  [**#15686**](https://www.acmicpc.net/problem/15686) Tag: 브루트 포스   
+내리막 길 [**#1520**](https://www.acmicpc.net/problem/1520) Tag: DP    
+빙산 [**#2573**](https://www.acmicpc.net/problem/2573) Tag: DFS, BFS   
