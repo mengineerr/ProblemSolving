@@ -26,7 +26,7 @@
 ### 문제 목록
 
 **GOLD V**  [**#1759**](https://www.acmicpc.net/problem/1759)    순열, 조합론   
-**GOLD IV** [**#1520**](https://www.acmicpc.net/problem/1520)    DP    
 **GOLD V**  [**#3190**](https://www.acmicpc.net/problem/3190)   구현   
 **GOLD V**  [**#15686**](https://www.acmicpc.net/problem/15686)  브루트 포스   
+**GOLD IV** [**#1520**](https://www.acmicpc.net/problem/1520)    DP    
 **GOLD IV** [**#2573**](https://www.acmicpc.net/problem/2573)  DFS, BFS   
