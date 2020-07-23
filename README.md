@@ -1,12 +1,7 @@
 # 7월 15일 
 ### 문제 목록
 
-[**#2667**](https://www.acmicpc.net/problem/2667)  
-[**#1260**](https://www.acmicpc.net/problem/1260)  
-[**#1012**](https://www.acmicpc.net/problem/1012)   
-[**#19237**](https://www.acmicpc.net/problem/19237)  
-[**#19238**](https://www.acmicpc.net/problem/19238)  
-[**#15683**](https://www.acmicpc.net/problem/15683)
+[**2667**](https://www.acmicpc.net/problem/2667) 단지번호 붙이기  [**1260**](https://www.acmicpc.net/problem/1260) DFS와 BFS  [**1012**](https://www.acmicpc.net/problem/1012) 유기농 배추  [**19237**] 어른 상어 tag: 구현 (https://www.acmicpc.net/problem/19237)  [**19238**](https://www.acmicpc.net/problem/19238)  스타트 택시 tag: 탐색  [**15683**] (https://www.acmicpc.net/problem/15683) 감시 tag: 구현
 
 김창우   
 SILVER II [**#2644**](https://www.acmicpc.net/problem/2644)  
