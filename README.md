@@ -25,4 +25,15 @@ GOLD V    [**#9663**](https://www.acmicpc.net/problem/9663)
 
 [**2573**](https://www.acmicpc.net/problem/2573) 빙산 tag: DFS, BFS       
 
+# 문제 추가
+[**11559**](https://www.acmicpc.net/problem/11559) 뿌요뿌요 tag: DFS, BFS, 시뮬레이션
+[**17471**](https://www.acmicpc.net/problem/2206) 게리맨더링 tag: 브루트포스, 그래프 이론
+[**2206**](https://www.acmicpc.net/problem/2206) 벽 부수고 이동하기 tag: BFS
+
+[**14442**](https://www.acmicpc.net/problem/14442) 벽 부수고 이동하기 2 tag: BFS
+[**19236**](https://www.acmicpc.net/problem/19236) 청소년 상어 tag: 브루트 포스
+
+DP 추가??
+
+
 
