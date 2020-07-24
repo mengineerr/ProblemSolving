@@ -32,15 +32,6 @@ GOLD V    [**#9663**](https://www.acmicpc.net/problem/9663)
 
 [**14442**](https://www.acmicpc.net/problem/14442) 벽 부수고 이동하기 2 tag: BFS
 [**19236**](https://www.acmicpc.net/problem/19236) 청소년 상어 tag: 브루트 포스
-+) 벽 부수기 문제 90퍼이상에서 틀리는 경우 
-
-반례
-
-1 1 1
-
-0
-
-ans: 1
 
 
 
