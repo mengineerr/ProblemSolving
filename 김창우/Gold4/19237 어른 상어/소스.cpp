@@ -20,8 +20,8 @@ int trace[MAX_MAP][MAX_MAP];
 int numberOfShark = 0, numberOfShark_temp = 0, time = 0;
 
 void binding(int &row, int &col, int num){
-	row = row + dirRow[num - 1];
-	col = col + dirCol[num - 1];
+	row = row + dirRow[num-1];
+	col = col + dirCol[num-1];
 }
 
 void changeTrace(){
@@ -132,7 +132,6 @@ int main() {
 		cin >> shark[i].dir;
 	}
 
-	
 	for (int i = 1 ; i <= numberOfShark ; i++){
 		for (int j = 1 ; j <= 4 ; j++){
 			cin >> shark[i].prior[j][1] >> shark[i].prior[j][2] >> shark[i].prior[j][3] >> shark[i].prior[j][4];
