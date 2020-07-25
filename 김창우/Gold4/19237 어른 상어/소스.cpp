@@ -138,7 +138,7 @@ int main() {
 		}
 	}
 
-	while(time <= 1000 && numberOfShark_temp > 1){
+	while(time < 1000 && numberOfShark_temp > 1){
 		time++;
 		movingShark();
 	}
