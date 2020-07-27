@@ -8,16 +8,6 @@ int dirCol[4] = {1, 0, -1, 0};
 char data[12][6];
 bool check[12][6];
 
-void print(){
-	for(int i = 0 ; i < 12 ; i++){
-		for(int j = 0 ; j < 6 ; j++){
-			cout << data[i][j] << " ";
-		}
-		cout << "\n";
-	}
-	cout << "\n";
-}
-
 void resetCheck(){
 	for(int i = 0 ; i < 12 ; i++){
 		for(int j = 0 ; j < 6 ; j++){
