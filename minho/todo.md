@@ -1,4 +1,4 @@
-# 문제 추가
+# 추가 문제
 
 ### Todo
 - [**11559**](https://www.acmicpc.net/problem/11559) 뿌요뿌요 tag: DFS, BFS, 시뮬레이션
