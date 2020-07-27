@@ -3,8 +3,6 @@
 #include <vector>
 #include <algorithm>
 
-// abs(num);
-
 struct location{
     int x;
     int y;
