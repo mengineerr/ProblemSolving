@@ -34,6 +34,9 @@ int bfs(){
         struct location cur = q.front();
         q.pop();
 
+        if(cur.x == M-1 && cur.y == N-1)
+            return cur.distance;
+
         for(int i = 0; i < 4; i++){
             if(cur.x + dx[i] < 0 || cur.x + dx[i] > M-1 || cur.y + dy[i] < 0 || cur.y + dy[i] > N-1)
                 continue;
@@ -44,8 +47,6 @@ int bfs(){
                 newloc.wall = cur.wall;
                 newloc.distance = cur.distance + 1;
                 visit[newloc.y][newloc.x][newloc.wall] = newloc.distance;
-                if(newloc.y == N-1 && newloc.x == M-1)
-                    return newloc.distance;
                 q.push(newloc);
                 
             }
@@ -56,8 +57,6 @@ int bfs(){
                 newloc.wall = cur.wall + 1;
                 newloc.distance = cur.distance + 1;
                 visit[newloc.y][newloc.x][newloc.wall] = newloc.distance;
-                if(newloc.y == N-1 && newloc.x == M-1)
-                    return newloc.distance;
                 q.push(newloc);
             }
         }
@@ -76,11 +75,6 @@ int main()
     for(int i = 0; i < N; i++)
         for(int j = 0; j < M; j++)
             scanf("%1d",&map[i][j]);
-
-    if (N == 1 && M == 1) {
-		cout << 1;
-		return 0;
-	}
 
     cout << bfs() << "\n";
 
