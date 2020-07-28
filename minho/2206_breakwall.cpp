@@ -8,8 +8,6 @@ int N, M;
 int **map;
 int dx[4] = {0,-1,0,1};
 int dy[4] = {1,0,-1,0};
-int wdx[4] = {0,-2,0,2};
-int wdy[4] = {2,0,-2,0};
 
 struct location{
     int x;
@@ -36,7 +34,7 @@ int bfs(){
         struct location cur = q.front();
         q.pop();
 
-        for(int i = 0; i < N; i++){
+        for(int i = 0; i < 4; i++){
             if(cur.x + dx[i] < 0 || cur.x + dx[i] > M-1 || cur.y + dy[i] < 0 || cur.y + dy[i] > N-1)
                 continue;
             if(map[cur.y + dy[i]][cur.x + dx[i]] == 0 && visit[cur.y + dy[i]][cur.x + dx[i]][cur.wall] == 0){
@@ -78,6 +76,11 @@ int main()
     for(int i = 0; i < N; i++)
         for(int j = 0; j < M; j++)
             scanf("%1d",&map[i][j]);
+
+    if (N == 1 && M == 1) {
+		cout << 1;
+		return 0;
+	}
 
     cout << bfs() << "\n";
 
