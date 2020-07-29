@@ -1,0 +1,1 @@
+https://tech.kakao.com/2019/10/02/kakao-blind-recruitment-2020-round1/
