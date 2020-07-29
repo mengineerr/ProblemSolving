@@ -32,21 +32,6 @@ int solution(vector<vector<int>> board) {
         struct drone cur = q.front();
         q.pop();
 
-        for(int i = 0; i < N; i++){
-            for(int j = 0; j < M; j++){
-                if(i == cur.y && j == cur.x){
-                    cout << 2;
-                }
-                else if(i == cur.y + dy[cur.dir] && j == cur.x + dx[cur.dir]){
-                    cout << 2;
-                }
-                else
-                    cout << board[i][j];
-            }
-            cout << "\n";
-        }
-        cout << "\n";
-
         if(cur.x == M-1 && cur.y == N-1){
             answer = cur.time;
             break;
@@ -159,8 +144,6 @@ int solution(vector<vector<int>> board) {
                 }
             }
         }
-
-        //answer++;
     }
 
     return answer;
