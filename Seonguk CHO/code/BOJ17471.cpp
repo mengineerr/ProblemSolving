@@ -30,7 +30,7 @@ dat bfs(vector <int> &set, int which){
     {
         now = q.front();
         q.pop();
-        for(int next: v[now]){
+        for(auto next: v[now]){
             if(set[next] == which && visit[next] == 0){
                 q.push(next); visit[next] = 1; a.len++; a.val += num[next];
             }
