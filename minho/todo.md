@@ -1,5 +1,3 @@
-# 추가 문제
-
 # 7월 29일
 ### Todo
 - [**17822**](https://www.acmicpc.net/problem/17822) 원판돌리기
