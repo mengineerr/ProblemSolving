@@ -13,15 +13,15 @@ int dirCol[4] = {0,1,0,-1};
 char map[MAX_MAP][MAX_MAP];
 int R, C, N;
 vector<int> orders;
-bool Cluster[MAX_MAP][MAX_MAP];
+bool checkClusters[MAX_MAP][MAX_MAP];
 bool visit[MAX_MAP][MAX_MAP];
-vector<pair<int, int>> clusters;
+vector<pair<int, int>> checkClusterss;
 
 int weight(int row, int col){
     int Cnt = 0;
     for (int i = row + 1; i < R; i++){
         if (map[i][col] == 'x'){
-            if (Cluster[i][col] == true) return INF;
+            if (checkClusters[i][col] == true) return INF;
             else return Cnt;
         }
         else if (map[i][col] == '.') Cnt++;
@@ -29,21 +29,21 @@ int weight(int row, int col){
     return Cnt;
 }
 
-void moveCluster(){
+void movecheckClusters(){
 	int H = INF - 1;
-    for (int i = 0; i < clusters.size(); i++){
-        int x = clusters[i].first;
-        int y = clusters[i].second;
+    for (int i = 0; i < checkClusterss.size(); i++){
+        int x = checkClusterss[i].first;
+        int y = checkClusterss[i].second;
         int Temp_H = weight(x, y);
 
         if (Temp_H == INF) continue;
         else H = min(H, Temp_H);
     }
  
-    sort(clusters.begin(), clusters.end());
-    for (int i = clusters.size() - 1 ; i >= 0 ; i--){
-        int x = clusters[i].first;
-        int y = clusters[i].second;
+    sort(checkClusterss.begin(), checkClusterss.end());
+    for (int i = checkClusterss.size() - 1 ; i >= 0 ; i--){
+        int x = checkClusterss[i].first;
+        int y = checkClusterss[i].second;
         map[x][y] = '.';
         map[x + H][y] = 'x';
     }
@@ -70,25 +70,25 @@ void BFS(int a, int b){
 	}
 }
 
-bool searchCluster(){
+bool searchcheckClusters(){
 	for(int i = 0 ; i < C ; i++){
 		if(map[R - 1][i] == 'x' && !visit[R - 1][i]){
 			BFS(R - 1, i);
 		}
 	}
 
-	bool clusterInAir = false;
+	bool checkClustersInAir = false;
 
 	for(int i = 0 ; i < R ; i++){
 		for(int j = 0 ; j < C ; j++){
 			if(map[i][j] == 'x' && !visit[i][j]){
-				clusters.push_back(make_pair(i, j));
-				Cluster[i][j] = true;
-				clusterInAir = true;
+				checkClusterss.push_back(make_pair(i, j));
+				checkClusters[i][j] = true;
+				checkClustersInAir = true;
 			}
 		}
 	}
-	return clusterInAir;
+	return checkClustersInAir;
 }
 
 bool throwStick(int height, char order){
@@ -114,9 +114,9 @@ bool throwStick(int height, char order){
 void solution(){
 	for (int i = 0; i < orders.size(); i++)
     {
-        clusters.clear();
+        checkClusterss.clear();
         memset(visit, false, sizeof(visit));
-        memset(Cluster, false, sizeof(Cluster));
+        memset(checkClusters, false, sizeof(checkClusters));
  
         char Order_C;
  
@@ -124,8 +124,8 @@ void solution(){
         else Order_C = 'R';
         
         if (!throwStick(R - orders[i], Order_C)) continue;
-        if (!searchCluster()) continue;
-        else moveCluster();
+        if (!searchcheckClusters()) continue;
+        else movecheckClusters();
     }
 	for (int i = 0; i < R; i++){
         for (int j = 0; j < C; j++)
