@@ -3,7 +3,7 @@
 #include <cstring>
 #include <algorithm>
 #define MAX_MAP 100
-#define INF 987654321
+#define INF __INT_MAX__
 
 using namespace std;
 
@@ -19,10 +19,8 @@ vector<pair<int, int>> clusters;
 
 int weight(int row, int col){
     int Cnt = 0;
-    for (int i = row + 1; i < R; i++)
-    {
-        if (map[i][col] == 'x')
-        {
+    for (int i = row + 1; i < R; i++){
+        if (map[i][col] == 'x'){
             if (Cluster[i][col] == true) return INF;
             else return Cnt;
         }
@@ -33,22 +31,19 @@ int weight(int row, int col){
 
 void moveCluster(){
 	int H = INF - 1;
-    for (int i = 0; i < clusters.size(); i++)
-    {
+    for (int i = 0; i < clusters.size(); i++){
         int x = clusters[i].first;
         int y = clusters[i].second;
-        
         int Temp_H = weight(x, y);
+
         if (Temp_H == INF) continue;
         else H = min(H, Temp_H);
     }
  
     sort(clusters.begin(), clusters.end());
-    for (int i = clusters.size() - 1; i >= 0; i--)
-    {
+    for (int i = clusters.size() - 1 ; i >= 0 ; i--){
         int x = clusters[i].first;
         int y = clusters[i].second;
- 
         map[x][y] = '.';
         map[x + H][y] = 'x';
     }
@@ -83,8 +78,6 @@ bool searchCluster(){
 	}
 
 	bool clusterInAir = false;
-
-	memset(Cluster, false, sizeof(Cluster));
 
 	for(int i = 0 ; i < R ; i++){
 		for(int j = 0 ; j < C ; j++){
@@ -126,15 +119,12 @@ void solution(){
         memset(Cluster, false, sizeof(Cluster));
  
         char Order_C;
-        int Height = orders[i];
-        Height = R - Height;
  
         if (i % 2 == 0) Order_C = 'L';
         else Order_C = 'R';
         
-        if (throwStick(Height, Order_C) == false) continue;
-    
-        if (searchCluster() == false) continue;
+        if (!throwStick(R - orders[i], Order_C)) continue;
+        if (!searchCluster()) continue;
         else moveCluster();
     }
 	for (int i = 0; i < R; i++){
