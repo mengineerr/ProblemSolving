@@ -1,6 +1,5 @@
 # 7월 29일
 ### Todo
-- [**1937**](https://www.acmicpc.net/problem/1937) 욕심쟁이 판다
 - [**2933**](https://www.acmicpc.net/problem/2933) 미네랄
 - [**18808**](https://www.acmicpc.net/problem/18808) 스티커 붙이기
 - [**2146**](https://www.acmicpc.net/problem/2146) 다리 만들기
@@ -10,6 +9,7 @@
 - [**17822**](https://www.acmicpc.net/problem/17822) 원판돌리기
 - [**2638**](https://www.acmicpc.net/problem/2638) 치즈
 - [**16947**](https://www.acmicpc.net/problem/16947) 지하철 2호선
+- [**1937**](https://www.acmicpc.net/problem/1937) 욕심쟁이 판다
 
 # 7월 20일 추가문제
 
