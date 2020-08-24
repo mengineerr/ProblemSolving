@@ -7,6 +7,7 @@
 [**18808**](https://www.acmicpc.net/problem/18808) 스티커 붙이기
 [**2146**](https://www.acmicpc.net/problem/2146) 다리 만들기
 [**8982**](https://www.acmicpc.net/problem/8982) 수족관 1
+[**17136**](https://www.acmicpc.net/problem/17136) 색종이 붙이기
 
 # 7월 20일   
 
