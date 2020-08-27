@@ -3,7 +3,8 @@
 [**2020카카오인턴쉽**](https://programmers.co.kr/learn/courses/30/lessons/67257) 문제 2
 [**2020카카오인턴쉽**](https://programmers.co.kr/learn/courses/30/lessons/67258) 문제 3
 [**2020카카오인턴쉽**](https://programmers.co.kr/learn/courses/30/lessons/67259) 문제 4
-[**2020카카오인턴쉽**](https://programmers.co.kr/learn/courses/30/lessons/67260) 문제 5
+[**2020카카오인턴쉽**](https://programmers.co.kr/learn/courses/30/lessons/67260) 문제 5  
+[**19236**](https://www.acmicpc.net/problem/19235) 모노미노도미노
 
 # 7월 29일
 [**17822**](https://www.acmicpc.net/problem/17822) 원판돌리기
