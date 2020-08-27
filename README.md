@@ -1,3 +1,10 @@
+# 8월 27일
+[**2020카카오인턴**](https://programmers.co.kr/learn/courses/30/lessons/67256) 문제 1
+[**2020카카오인턴**](https://programmers.co.kr/learn/courses/30/lessons/67257) 문제 2
+[**2020카카오인턴**](https://programmers.co.kr/learn/courses/30/lessons/67258) 문제 3
+[**2020카카오인턴**](https://programmers.co.kr/learn/courses/30/lessons/67259) 문제 4
+[**2020카카오인턴**](https://programmers.co.kr/learn/courses/30/lessons/67260) 문제 5
+
 # 7월 29일
 [**17822**](https://www.acmicpc.net/problem/17822) 원판돌리기
 [**2638**](https://www.acmicpc.net/problem/2638) 치즈
