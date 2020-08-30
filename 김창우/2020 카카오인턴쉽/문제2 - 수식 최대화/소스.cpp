@@ -9,6 +9,18 @@ char firstExpress[6] = {'*', '*', '+', '+', '-', '-'};
 char secondExpress[6] = {'+', '-', '*', '-', '+', '*'};
 char thirdExpress[6] = {'-', '+', '-', '*', '*', '+'};
 
+void printValue(vector<long long> num, vector<char> exp){
+	for(int i = 0 ; i < num.size() ; i++){
+		cout << num[i] << " ";
+	}
+	cout << "\n";
+	for(int i = 0 ; i < exp.size() ; i++){
+		cout << exp[i] << " ";
+	}
+	cout << "\n";
+	cout << "\n";
+}
+
 long long calculator(long long number1, long long number2, char expression){
 	switch(expression){
 		case '*': return number1 * number2;
@@ -53,7 +65,9 @@ long long solution(string expression){
     			}
     		}else{
     			if(expressions[j] == firstExpress[i]){
-    				firstNumbers.push_back(calculator(firstNumbers.back(), numbers[j+1], expressions[j]));
+    				long long realTemp = firstNumbers.back();
+    				firstNumbers.pop_back();
+    				firstNumbers.push_back(calculator(realTemp, numbers[j+1], expressions[j]));
     				calFlag = true;
     			}else{
     				firstExpressions.push_back(expressions[j]);
@@ -64,6 +78,7 @@ long long solution(string expression){
     			firstNumbers.push_back(numbers[j+1]);
     		}
     	}
+    	//printValue(firstNumbers, firstExpressions);
 
     	vector<long long> secondNumbers;
    		vector<char> secondExpressions;
@@ -79,7 +94,9 @@ long long solution(string expression){
     			}
     		}else{
     			if(firstExpressions[j] == secondExpress[i]){
-    				secondNumbers.push_back(calculator(secondNumbers.back(), firstNumbers[j+1], firstExpressions[j]));
+    				long long realTemp = secondNumbers.back();
+    				secondNumbers.pop_back();
+    				secondNumbers.push_back(calculator(realTemp, firstNumbers[j+1], firstExpressions[j]));
     				calFlag = true;
     			}else{
     				secondExpressions.push_back(firstExpressions[j]);
@@ -90,6 +107,7 @@ long long solution(string expression){
     			secondNumbers.push_back(firstNumbers[j+1]);
     		}
     	}
+    	//printValue(secondNumbers, secondExpressions);
 
     	for(int j = 0 ; j < secondExpressions.size() ; j++){
     		if(j == 0){
@@ -99,6 +117,7 @@ long long solution(string expression){
     		}
     	}
     	answer = max(answer, abs(temp));
+    	//cout << answer << "\n";
     }
     return answer;
 }
