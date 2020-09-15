@@ -24,4 +24,4 @@ string solution(string number, int k) {
     
     return answer;
 }
- 
+  
