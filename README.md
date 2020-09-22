@@ -1,3 +1,6 @@
+# 연습문제   
+[**코딩테스트 고득점 Kit**](https://programmers.co.kr/learn/challenges)   
+
 # 8월 27일
 [**2020카카오인턴쉽**](https://programmers.co.kr/learn/courses/30/lessons/67256) 문제 1
 [**2020카카오인턴쉽**](https://programmers.co.kr/learn/courses/30/lessons/67257) 문제 2
