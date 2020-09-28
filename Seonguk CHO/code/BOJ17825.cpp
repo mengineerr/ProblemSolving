@@ -56,7 +56,6 @@ loc mov(int x, int y, int num){
 void dfs(int cnt, int num){
     if(cnt == 10){
         // 종료조건
-
         ans = (ans < num) ? num : ans;
         return;
     }
@@ -89,9 +88,6 @@ void dfs(int cnt, int num){
 int main(){
     for(int i = 0; i < 10; i++) cin >> step[i];
     memset(chk, 0, sizeof(chk));
-    for(int i = 0; i < v.size(); i++){
-        cout << v[i].size() << endl;
-    }
     dfs(0,0);
     cout << ans;
     return 0;
