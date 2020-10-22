@@ -22,7 +22,7 @@ int solution(int distance, vector<int> rocks, int n) {
             if(mid > next - idx)
                 cnt++;
             else
-                idx = next; // 연속된 돌의 거리가 mid보다 작을 수 있는 경우
+                idx = next; // 연속된 돌의 거리가 mid보다 작은 경우 포함
         }
         
         if(cnt > n)
