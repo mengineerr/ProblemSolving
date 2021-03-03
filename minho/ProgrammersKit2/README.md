@@ -22,3 +22,31 @@
 ```
 
 <br>
+
+## Hash 03
+- 알고리즘의 효율을 위해 불필요한 과정을 줄이자
+- 리스트 메소드의 활용을 줄여 시간적 비효율을 개선한 방법
+
+``` python
+def solution(clothes):
+    answer = 0
+    
+    cloth_dict = {}
+    
+    for name, kind in clothes:
+        if kind not in cloth_dict:
+            cloth_dict[kind] = 1    # 개수만 알면되므로 리스트가 아닌 숫자로 사용
+        else:
+            cloth_dict[kind] += 1   # 리스트를 쓰게되면 append에서 시간적 비효율
+    
+    for kind, value in cloth_dict.items():
+        if answer == 0:
+            answer += value + 1
+        else:
+            answer *= (value + 1)   # (종류 + 안입는경우) 중복순열 아이디어
+    
+    return answer - 1   # 아무것도 안입는 경우 제외
+```
+
+<br>
+
