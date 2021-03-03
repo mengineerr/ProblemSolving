@@ -47,3 +47,48 @@
 
 <br>
 
+## Hash 04
+- list comprehension 다양한 방법
+- 리스트, 딕셔너리 정렬방법
+
+```python
+    # Dictionary 기본 베이스를 List Comprehension으로 만드는 방법
+    # total_dict = {e:[] for e in set(genres)}
+    total_dict = {}
+    idx_dict = {}
+    index = 0
+```
+
+```python
+    # index 변수를 사용하지 않고 zip(genres, plays, range(len(genres)))를 사용하면 더 편하다
+    for genre, play in zip(genres, plays):
+        if genre not in total_dict:
+            total_dict[genre] = play
+        else:
+            total_dict[genre] += play
+        
+        if genre not in idx_dict:
+            idx_dict[genre] = [(play, index)]
+        else:
+            idx_dict[genre].append((play, index))
+        
+        index +=1
+```
+
+```python
+    # Dictionary value기준 역정렬
+    sorted_dict = sorted(total_dict.items(), key=lambda x : x[1], reverse=True) 
+    
+    # dictionary의 for loop는 key가 기준
+    for genre in sorted_dict:
+        cnt = 2
+        play_list = idx_dict[genre[0]]
+        play_list.sort(key=lambda x: (-x[0], x[1])) # 값 기준 정렬 후 고유 번호가 낮게 나오도록 재정렬
+        for play, loc in play_list:
+            if cnt <= 0:
+                continue
+            answer.append(loc)
+            cnt -= 1
+    
+    return answer
+```
