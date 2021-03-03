@@ -17,8 +17,8 @@
 ## Hash 02
 - 문자열 길이별 정렬
 ```python
-# 리스트 길이별 정렬
-phone_book.sort(key=lambda x: len(x))
+    # 리스트 길이별 정렬
+    phone_book.sort(key=lambda x: len(x))
 ```
 
 <br>
