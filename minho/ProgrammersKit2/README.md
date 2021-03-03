@@ -89,6 +89,4 @@
                 continue
             answer.append(loc)
             cnt -= 1
-    
-    return answer
 ```
