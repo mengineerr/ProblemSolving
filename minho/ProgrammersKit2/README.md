@@ -94,6 +94,7 @@
 ## Stack/Queue 01
 - collection 모듈을 활용하자
 - for _ in range(something):
+- 리스트 sum()메소드는 시간을 늘리는 주범!
 
 ```python
     cur_bridge = deque(0 for _ in range(bridge_length)) # 단순히 리스트보다는 deque를 활용하자
