@@ -96,9 +96,7 @@
 - for _ in range(something):
 
 ```python
-    answer = 0
     cur_bridge = deque(0 for _ in range(bridge_length)) # 단순히 리스트보다는 deque를 활용하자
-    total = 0
 ```
 
 ```python
