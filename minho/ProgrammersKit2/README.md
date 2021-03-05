@@ -90,3 +90,40 @@
             answer.append(loc)
             cnt -= 1
 ```
+
+## Stack/Queue 01
+- collection 모듈을 활용하자
+- for _ in range(something):
+
+```python
+    answer = 0
+    cur_bridge = deque(0 for _ in range(bridge_length)) # 단순히 리스트보다는 deque를 활용하자
+    total = 0
+```
+
+```python
+    while truck_weights:
+        total -= cur_bridge.popleft()
+        
+        if total + truck_weights[0] > weight:
+            cur_bridge.append(0)
+        else:
+            cur_truck = truck_weights.pop(0)
+            total += cur_truck
+            cur_bridge.append(cur_truck)
+        
+        answer += 1
+```
+
+```python
+    """ 단순히 한칸씩 옮기는 과정으로 비효율적이다
+    while total > 0:
+        total -= cur_bridge.popleft()
+        cur_bridge.append(0)
+        answer += 1
+    """
+    
+    # 메인 루프의 모든 과정이 끝나면 최종 트럭이 다리의 첫 위치에 위치하게 된다
+    # 이 트럭만 도착하면 되므로 bridge_length만큼의 시간이 필요하다
+    answer += bridge_length 
+```
