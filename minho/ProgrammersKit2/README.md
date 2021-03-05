@@ -126,3 +126,21 @@
     # 이 트럭만 도착하면 되므로 bridge_length만큼의 시간이 필요하다
     answer += bridge_length 
 ```
+
+## Stack/Queue 02
+- 변수에 할당해서 메소드의 반복을 줄이자
+```python
+    answer = [0 for _ in prices]
+    prices_len = len(prices)
+    
+    for i in range(prices_len-1):   # 변수 활용
+        answer[i] += 1
+        idx = i+1
+        
+        while idx <= (prices_len - 2):  # 변수 활용
+            if prices[idx] < prices[i]:
+                break
+            else:
+                answer[i] += 1
+            idx += 1
+```
