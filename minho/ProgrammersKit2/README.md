@@ -1,4 +1,4 @@
-# ProgrammersKit(2021-03-03)
+# ProgrammersKit
 
 ## Hash 01
 - 문자열의 길이가 일정한지 확인 필요
