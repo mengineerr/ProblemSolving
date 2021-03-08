@@ -26,3 +26,40 @@
             }
         }
 ```
+
+<br>
+
+# Hash 02
+startsWith() 방식
+```java
+        for(int i = 0; i < phone_book.length-1; i++){
+            for(int j = i+1; j < phone_book.length; j++){
+                
+                if(phone_book[i].startsWith(phone_book[j])){    // startsWith() 메소드 
+                    return false;   // 자바에서는 true, false 소문자 시작
+                }
+                if(phone_book[j].startsWith(phone_book[i])){
+                    return false;
+                }
+                
+            }
+        }
+```
+HashCode() 방식
+```java
+        for(int i = 0; i < phone_book.length-1; i++){
+            int cur_hash = phone_book[i].hashCode();    // hashCode() 메소드
+            int cur_len = phone_book[i].length();   // 배열은 괄호가 없고, string은 괄호 포함
+            
+            for(int j = i+1; j < phone_book.length; j++){
+                if(phone_book[j].length() >= cur_len && 
+                   (cur_hash == phone_book[j].substring(0,cur_len).hashCode())){        // substring(0,len)
+                    return false;
+                }
+                else if(phone_book[j].length() < cur_len && 
+                        ((phone_book[i].substring(0,phone_book[j].length()).hashCode()) == phone_book[j].hashCode())){
+                    return false;
+                }
+            }
+        }
+```
