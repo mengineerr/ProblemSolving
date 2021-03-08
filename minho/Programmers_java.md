@@ -30,7 +30,7 @@
 <br>
 
 # Hash 02
-startsWith() 방식
+startsWith() 방식 : 2순위(실패)
 ```java
         for(int i = 0; i < phone_book.length-1; i++){
             for(int j = i+1; j < phone_book.length; j++){
@@ -45,7 +45,7 @@ startsWith() 방식
             }
         }
 ```
-HashCode() 방식
+HashCode() 방식 : 3순위(실패), hashCode()메소드가 추가됐을 뿐 Big-O에는 차이가 없어서 그런것 같다
 ```java
         for(int i = 0; i < phone_book.length-1; i++){
             int cur_hash = phone_book[i].hashCode();    // hashCode() 메소드
@@ -62,4 +62,22 @@ HashCode() 방식
                 }
             }
         }
+```
+String 정렬을 수행해서 유사한 문자열끼리 정렬하고 비교하는 방식
+```java
+import java.util.Arrays;
+
+class Solution {
+    public boolean solution(String[] phone_book) {
+        Arrays.sort(phone_book);
+        boolean result = true;
+        for (int i=0; i<phone_book.length-1; i++) {
+            if (phone_book[i+1].startsWith(phone_book[i])) {
+                result = false;
+                break;
+            }
+        }
+        return result;
+    }
+}
 ```
