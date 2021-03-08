@@ -112,3 +112,90 @@ Iterator 사용법
             //  Integer.parseInt(str)   String형 객체에서 int형 값을 뽑아 내는 메소드
         }
 ```
+
+<br>
+
+# Hash04
+모든 코드 다시
+```java
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
+class Solution {
+    public int[] solution(String[] genres, int[] plays) {
+
+        Map<String, Object> genres_map = new HashMap<String, Object>(); // Object 자체로도 선언 가능
+        Map<String, Integer> total_map = new HashMap<String, Integer>();
+        
+        for(int i = 0; i < genres.length; i++){
+            HashMap<Integer, Integer> temp_map;
+            
+            if(!genres_map.containsKey(genres[i])){ // map.containsKey()
+                temp_map = new HashMap<Integer, Integer>(); // Object에 HashMap<Integer, Integer>() 을 넣는 방식
+            }
+            else{
+                temp_map = (HashMap<Integer, Integer>)genres_map.get(genres[i]);
+            }
+            
+            temp_map.put(i, plays[i]);
+            genres_map.put(genres[i], temp_map);
+            
+            if(!total_map.containsKey(genres[i])){
+                total_map.put(genres[i], plays[i]);
+            }
+            else{
+                total_map.put(genres[i], (total_map.get(genres[i]) + plays[i]));
+            }
+        }
+        
+        // Iterator<String> it = total_map.keySet().iterator();    // map.keySet().iterator() : key 가져오는 메소드
+        Iterator it = sortByValue(total_map).iterator();    // 정렬함수를 직접 만들어서 사용한 경우
+        ArrayList<Integer> result = new ArrayList<Integer>(); 
+        
+        while(it.hasNext()){
+            String key = (String)it.next();
+            
+            Iterator choice = sortByValue((HashMap<Integer, Integer>)genres_map.get(key)).iterator();
+            int cnt = 0;
+            
+            while(choice.hasNext()){
+                if(cnt >= 2)
+                    break;
+                int loc = (int)choice.next();
+                result.add(loc);
+                cnt++;
+            }
+        }
+        
+        int[] answer = new int[result.size()];
+        
+        for(int i = 0; i < result.size(); i++)
+            answer[i] = result.get(i).intValue();   // ArrayList.get(index).intValue() : ArrayList에서 int값을 가져오는 경우
+        
+        
+        return answer;
+    }
+    
+    public static ArrayList sortByValue(final Map map){
+        ArrayList<String> key_list = new ArrayList();
+        key_list.addAll(map.keySet());  // ArrayList.addAll() : 인자로 전달되는 Collection 객체의 모든 아이템을 리스트에 추가
+        
+        Collections.sort(key_list, new Comparator(){    // 정렬 비교 함수, 기억해두자
+            public int compare(Object o1, Object o2){
+                Object v1 = map.get(o1);
+                Object v2 = map.get(o2);
+                
+                return ((Comparable)v2).compareTo(v1);
+            }
+        });
+        
+        // Collections.reverse(key_list)   // 오름차순을 원할 시
+        
+        return key_list;
+    }
+}
+```
