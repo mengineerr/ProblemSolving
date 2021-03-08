@@ -63,7 +63,7 @@ HashCode() 방식 : 3순위(실패), hashCode()메소드가 추가됐을 뿐 Big
             }
         }
 ```
-String 정렬을 수행해서 유사한 문자열끼리 정렬하고 비교하는 방식
+String 정렬을 수행해서 유사한 문자열끼리 정렬하고 비교하는 방식 (정답)
 ```java
 import java.util.Arrays;
 
