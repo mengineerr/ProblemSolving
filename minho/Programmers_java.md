@@ -1,8 +1,8 @@
 # Hash 01
 라이브러리
 ```java
-import java.util.Arrays;
-import java.util.Collections;
+        import java.util.Arrays;
+        import java.util.Collections;
 ```
 
 자바에서 정렬 사용하기
@@ -15,7 +15,7 @@ import java.util.Collections;
 
 배열 형태 주의
 ```java
-  String[] participant
+        String[] participant
 ```
 
 배열 메소드 괄호 주의
