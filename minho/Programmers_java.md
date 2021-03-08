@@ -81,3 +81,34 @@ class Solution {
     }
 }
 ```
+
+<br>
+
+# Hash03
+Map 사용법
+```java
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Iterator;
+
+        Map<String, Integer> map = new HashMap<String, Integer>();
+        
+        for(String[] s: clothes){
+            int temp = 0;
+            if(map.containsKey(s[1]))   // map.containsKey(key) 키가 존재하는 지 확인
+                temp = map.get(s[1]);   // map.get(key)    해당하는 key의 value를 가져오는 메소드
+            map.put(s[1], temp+1);      // map.put(String, Integer) map에 값을 넣는 메소드
+                                        // key 중복시 새로운 값으로 대체된다
+        }
+```
+Iterator 사용법
+```java
+        // Iterator는 모든 컬렉션 프레임워크에 공통으로 사용 가능
+        Iterator<Integer> it = map.values().iterator();
+        
+        while(it.hasNext()) {   // Iterator.hasNest()   다음 요소가 있는지 확인하는 메소드
+            answer *= it.next().intValue()+1;   // Iterator.next() 다음 요소를 가져온다
+            // Integer.intValue()   Integer 객체에서 int형 값을 뽑아내는 메소드
+            //  Integer.parseInt(str)   String형 객체에서 int형 값을 뽑아 내는 메소드
+        }
+```
