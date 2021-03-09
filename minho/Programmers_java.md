@@ -262,3 +262,60 @@ class Solution {
     }
 }
 ```
+
+<br>
+
+# Stack/Queue 03
+- Deque 사용법
+- 유동성있는 배열을 위해 ArrayList를 기본으로 쓰자
+
+```java
+import java.util.*;
+
+class Solution {
+    public int[] solution(int[] progresses, int[] speeds) {
+        List<Integer> answer_list = new ArrayList<>();  // List<Object> answer_list = new ArrayList<>()
+        Deque<Integer> deque = new ArrayDeque<>();  // Deque<Object> deque = new ArrayDeque<>();
+    
+        for(int i = 0; i < progresses.length; i++){
+            int len = 0;
+            
+            if(((100-progresses[i]) % speeds[i]) != 0)  // 1일이 기준이므로 나머지가 발생시 올림 처리 필요
+                len = ((100-progresses[i]) / speeds[i]) + 1;
+            else
+                len = ((100-progresses[i]) / speeds[i]);
+            
+            deque.addLast(len); // Deque.addFirst() / Deque.addLast()
+        }
+        
+        int cur = 0;
+        int cnt = 0;
+        
+        while(!deque.isEmpty()){    // Deque.isEmpty()
+            if(cur == 0){
+                cur = deque.removeFirst();  // Deque.removeFirst() / Deque.removeList()
+                cnt++;
+            }
+            else if(cur >= deque.peekFirst()){
+                deque.removeFirst();
+                cnt++;
+            }
+            else{
+                cur = deque.removeFirst();
+                answer_list.add(cnt);
+                cnt = 1;
+            }
+        }
+        
+        if(cnt > 0)
+            answer_list.add(cnt);
+        
+        int[] answer = new int[answer_list.size()]; // ArrayList.size()
+        
+        for(int i = 0; i < answer_list.size(); i++)
+            answer[i] = answer_list.get(i); // ArrayList.get(idx)
+        
+        return answer;
+    }
+}
+```
