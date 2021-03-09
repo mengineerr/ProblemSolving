@@ -199,3 +199,66 @@ class Solution {
     }
 }
 ```
+
+<br>
+
+# Stack/Queue 01
+- class 활용
+- Queue 메소드 확인
+
+```java
+import java.util.Queue;
+import java.util.LinkedList;
+
+class Solution {
+    class Truck{
+        int weight;
+        int distance;
+        
+        public Truck(int _weight){
+            this.weight = _weight;
+            this.distance = 0;
+        }
+        
+        public void move(){
+            this.distance += 1;
+        }
+    }
+    
+    public int solution(int bridge_length, int weight, int[] truck_weights) {
+        int answer = 0;
+        Queue<Truck> wait_truck = new LinkedList<>();
+        Queue<Truck> moving_truck = new LinkedList<>();
+        
+        for(int w: truck_weights){
+            Truck temp = new Truck(w);
+            wait_truck.offer(temp); // 자바에서는 Queue.offer() / Queue.poll() / Queue.peek()
+        }
+        
+        int total_weight = 0;
+        
+        while(!wait_truck.isEmpty() || !moving_truck.isEmpty()){
+            answer++;
+            
+            if(!moving_truck.isEmpty())
+                for (Truck tmp : moving_truck)
+                    tmp.move();
+            
+            if(!moving_truck.isEmpty() && moving_truck.peek().distance > bridge_length){
+                Truck tmp = moving_truck.poll();
+                total_weight -= tmp.weight;
+            }
+            
+            if(!wait_truck.isEmpty() && total_weight + wait_truck.peek().weight <= weight){
+                Truck tmp = wait_truck.poll();
+                total_weight += tmp.weight;
+                tmp.move();
+                moving_truck.offer(tmp);
+            }
+            
+        }
+        
+        return answer;
+    }
+}
+```
