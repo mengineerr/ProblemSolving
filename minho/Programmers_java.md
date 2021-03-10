@@ -350,3 +350,20 @@ class Solution {
     }
 }
 ```
+
+<br>
+
+# Graph 01
+```java
+        ArrayList<Integer>[] path = new ArrayList[n];
+        Deque<Integer> q = new ArrayDeque<Integer>();
+        
+        for(int[] tmp: edge){
+            if(path[tmp[0]-1] == null)  // ArrayList는 null로 빈공간 확인
+                path[tmp[0]-1] = new ArrayList<Integer>();
+            if(path[tmp[1]-1] == null)
+                path[tmp[1]-1] = new ArrayList<Integer>();
+            path[tmp[0]-1].add(tmp[1]-1);
+            path[tmp[1]-1].add(tmp[0]-1);
+        }
+```
