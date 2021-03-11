@@ -170,3 +170,20 @@
                 cnt = 0
             date += 1
 ```
+
+## Stack/Queue 04
+```python
+    p_list = [(p, i) for i,p in enumerate(priorities)]  # enumerate() 메소드
+```
+
+```python
+    while d:
+        cur = d.popleft()
+        
+        if any(cur[0] < e[0] for e in d):   # any() 메소드 / deque도 for문 가능
+            d.append(cur)
+        else:
+            answer += 1
+            if cur[1] == location:
+                break
+```
