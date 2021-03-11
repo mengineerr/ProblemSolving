@@ -154,3 +154,19 @@
     print(list(map(''.join, itertools.permutations(pool)))) # 3개의 원소로 수열 만들기
     print(list(map(''.join, itertools.permutations(pool, 2)))) # 2개의 원소로 수열 만들기
 ```
+
+## Stack/Queue 03
+- 리스트를 while 반복문 판별에 활용하자
+
+```python
+    while progresses:
+        if progresses[0] + speeds[0] * date >= 100:
+            cnt += 1
+            progresses.pop(0)
+            speeds.pop(0)
+        else:
+            if cnt > 0:
+                answer.append(cnt)
+                cnt = 0
+            date += 1
+```
