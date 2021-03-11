@@ -210,3 +210,25 @@ def solution(scoville, K):
     return answer
 ```
 
+## Greedy 05
+```python
+    link = list(list() for _ in range(n))   # 리스트 초기 선언 방법
+```
+
+```python
+    heapq.heappush(priority, (0,0)) # 튜플의 경우에도 정렬 가능, 앞의 값을 기준으로 정렬
+    
+    while False in visited: # in 활용법 확인
+        cost, start = heapq.heappop(priority)   # 크기별로 저장되도록 cost를 앞에 쓴다
+        
+        if visited[start]:
+            continue
+        
+        visited[start] = True
+        answer += cost
+        
+        for end, cost in link[start]:
+            if visited[end]:
+                continue
+            heapq.heappush(priority, (cost, end))
+```
