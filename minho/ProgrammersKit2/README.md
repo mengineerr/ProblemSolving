@@ -187,3 +187,26 @@
             if cur[1] == location:
                 break
 ```
+
+## Heap 01
+```python
+import heapq
+
+def solution(scoville, K):
+    answer = 0
+    
+    heap = []
+    
+    for num in scoville:
+        heapq.heappush(heap,num)    # heapq.heappush(list, num)
+        
+    while heap[0] < K:
+        try:
+            heapq.heappush(heap, heapq.heappop(heap) + heapq.heappop(heap) * 2) # heapq.heappop()
+        except IndexError:
+            return -1
+        answer += 1
+            
+    return answer
+```
+
